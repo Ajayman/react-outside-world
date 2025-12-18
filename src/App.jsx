@@ -1,4 +1,4 @@
-import { useState,useMemo } from 'react'
+import { useState,useMemo, useCallback } from 'react'
 function App() {
   const [name, setName] = useState('Kumar');
   const derivedName = name;
@@ -7,6 +7,9 @@ function App() {
     { id: 2, name: 'Bob' },
     { id: 3, name: 'Charlie' },
   ]);
+  const cachedUser = useCallback(()=>{
+    return "hi" + name
+  },[name])
   const idtouser = useMemo(() => {
     const foundUser = users.find((user) => {
       console.log("find chalyo")
